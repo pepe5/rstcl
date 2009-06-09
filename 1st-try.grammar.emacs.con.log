@@ -126,3 +126,63 @@ Date:   Tue Jun 9 16:37:14 2009 -0400
 :000000 100644 0000000... ea7e1ff... A  emacs.con.log~
 
 >$ git commit -a
+emacsclient: can't find socket; have you started the server?
+To start the server in Emacs, type "M-x server-start".
+emacsclient: No socket or alternate editor.  Please use:
+
+        --socket-name
+        --server-file      (or environment variable EMACS_SERVER_FILE)
+        --alternate-editor (or environment variable ALTERNATE_EDITOR)
+fatal: There was a problem with the editor emacsclient.
+
+>$ git commit -a
+Waiting for Emacs...
+Created commit 7c535f0: pico-tidyfied
+ 4 files changed, 286 insertions(+), 2 deletions(-)
+ create mode 120000 .#emacs.con.log
+ create mode 100644 1st-try.grammar.rb
+ create mode 100644 1st-try.grammar.rb~
+
+>$ git push origin master
+Counting objects: 8, done.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 2.89 KiB, done.
+Total 6 (delta 1), reused 0 (delta 0)
+To git@github.com:pepe5/rstcl.git
+   eed2ff1..7c535f0  master -> master
+
+>$ git-whatchanged | cat
+commit 7c535f0675616447be5ba77c21aad294b29f329b
+Author: root <root@andLinux.(none)>
+Date:   Tue Jun 9 18:03:01 2009 -0400
+
+    pico-tidyfied
+
+:000000 120000 0000000... f0419fd... A  .#emacs.con.log
+:000000 100644 0000000... ba6c28f... A  1st-try.grammar.rb
+:000000 100644 0000000... 44ced09... A  1st-try.grammar.rb~
+:100644 100644 3d7a97d... d1dad05... M  emacs.con.log
+
+commit eed2ff197cd1ecb641ff621b21ebc81bb1a361aa
+Author: root <root@andLinux.(none)>
+Date:   Tue Jun 9 17:09:18 2009 -0400
+
+    grammar try
+
+:120000 000000 f0419fd... 0000000... D  .#emacs.con.log
+:100644 100644 803663f... 3d7a97d... M  emacs.con.log
+:100644 100644 ea7e1ff... 43c0e7c... M  emacs.con.log~
+
+commit 1e09e57ecef285bb56902f7d5cc80238c10625d2
+Author: root <root@andLinux.(none)>
+Date:   Tue Jun 9 16:37:14 2009 -0400
+
+    1st
+
+:000000 120000 0000000... f0419fd... A  .#emacs.con.log
+:000000 100644 0000000... 803663f... A  emacs.con.log
+:000000 100644 0000000... ea7e1ff... A  emacs.con.log~
+
+>$ git mv emacs.con.log 1st-try.grammar.emacs.con.log
+
+>$ 
