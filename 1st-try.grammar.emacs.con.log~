@@ -184,21 +184,4 @@ Date:   Tue Jun 9 16:37:14 2009 -0400
 :000000 100644 0000000... ea7e1ff... A  emacs.con.log~
 
 >$ git mv emacs.con.log 1st-try.grammar.emacs.con.log
-
->$ git commit -a
-Waiting for Emacs...
-Created commit e764e72: con.log renamed
- 3 files changed, 188 insertions(+), 129 deletions(-)
- delete mode 120000 .#emacs.con.log
- create mode 100644 1st-try.grammar.emacs.con.log
- delete mode 100644 emacs.con.log
-
->$ git push origin master
-Counting objects: 4, done.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 1.82 KiB, done.
-Total 3 (delta 0), reused 0 (delta 0)
-To git@github.com:pepe5/rstcl.git
-   7c535f0..e764e72  master -> master
-
 >$ 

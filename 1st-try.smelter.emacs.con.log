@@ -1,0 +1,44 @@
+[root@andLinux ~]# pushd text/rstcl/
+~/text/rstcl ~
+
+[root@andLinux rstcl]# TERM=ansi; PS1='>$ '; stty cols 999                                                          
+>$ git init
+Initialized empty Git repository in /root/text/rstcl/.git/
+
+>$ gem install \=arx/smelter-0.0.1.gem 
+Successfully installed dslkit-0.2.5
+Successfully installed lazylist-0.3.1
+Successfully installed smelter-0.0.1
+3 gems installed
+Installing ri documentation for dslkit-0.2.5...
+Installing ri documentation for lazylist-0.3.1...
+Installing ri documentation for smelter-0.0.1...
+Installing RDoc documentation for dslkit-0.2.5...
+Installing RDoc documentation for lazylist-0.3.1...
+Installing RDoc documentation for smelter-0.0.1...
+
+>$ git add *
+>$ ls -alF
+total 64
+drwxr-xr-x 3 root root 4096 Jun  9 18:27 ./
+lrwxrwxrwx 1 root root   29 Jun  9 18:27 .#1st-try.smelter.emacs.con.log -> root@andLinux.4537:1243325611
+drwxr-xr-x 3 root root 4096 Jun  9 16:27 ../
+drwxr-xr-x 8 root root 4096 Jun  9 18:25 .git/
+-rw-r--r-- 1 root root 6164 Jun  9 18:15 1st-try.grammar.emacs.con.log
+-rw-r--r-- 1 root root 5662 Jun  9 18:11 1st-try.grammar.emacs.con.log~
+-rw-r--r-- 1 root root 2804 Jun  9 18:00 1st-try.grammar.rb
+-rw-r--r-- 1 root root 2917 Jun  9 17:01 1st-try.grammar.rb~
+-rw-r--r-- 1 root root 1714 Jun  9 18:25 1st-try.smelter.emacs.con.log
+-rw-r--r-- 1 root root 6164 Jun  9 18:24 1st-try.smelter.emacs.con.log~
+-rw-r--r-- 1 root root 2985 Jun  9 18:27 1st-try.smelter.rb
+lrwxrwxrwx 1 root root   69 Jun  9 18:22 =arx -> /mnt/win/pepa/=!3.pub+4.coo/=3.pub,08-06/dev 1pr (rebol rb py tcl ..)/
+lrwxrwxrwx 1 root root   28 Jun  9 18:19 @(D) texts -> /mnt/win/pepa/dox(!)/text/sc/
+lrwxrwxrwx 1 root root   24 Jun  9 18:20 @temp-folder -> /mnt/win/temp/dev/1pr sc/
+-rw-r--r-- 1 root root 1390 Jun  9 17:04 emacs.con.log~
+-rw-r--r-- 1 root root   24 Jun  9 18:02 git
+
+>$ git add 1st-try.smelter.rb
+>$ ruby 1st-try.smelter.rb
+1st-try.smelter.rb:3: uninitialized constant Smelter (NameError)
+
+>$ 
