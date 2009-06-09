@@ -11,11 +11,41 @@ Initialized empty Git repository in /root/text/rstcl/.git/
 Repository not found. If you've just created it, please try again in a few seconds.
 fatal: The remote end hung up unexpectedly
 
+>$ git add .
 >$ git commit -m '1st'
-Created initial commit 5922176: 1st
- 3 files changed, 7 insertions(+), 0 deletions(-)
+Created initial commit 1e09e57: 1st
+ 3 files changed, 27 insertions(+), 0 deletions(-)
  create mode 120000 .#emacs.con.log
- create mode 100644 README
  create mode 100644 emacs.con.log
+ create mode 100644 emacs.con.log~
 
+>$ git remote add origin git@github.com:pepe5/rstcl.git
+>$ git push origin master
+Counting objects: 5, done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 782 bytes, done.
+Total 5 (delta 0), reused 0 (delta 0)
+To git@github.com:pepe5/rstcl.git
+ * [new branch]      master -> master
+
+>$ git commit -m 'grammar try'
+# On branch master
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#
+#       modified:   emacs.con.log
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       1st-try.grammar.rb
+#       1st-try.grammar.rb~
+no changes added to commit (use "git add" and/or "git commit -a")
+
+>$ git commit -a 'grammar try'
+fatal: Paths with -a does not make sense.
+
+>$ echo $EDITOR
+
+>$ export EDITOR=emacsclient
 >$ 
