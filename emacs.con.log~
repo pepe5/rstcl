@@ -1,0 +1,5 @@
+[root@andLinux ~]# pushd text/rstcl/
+~/text/rstcl ~
+
+[root@andLinux rstcl]# TERM=ansi; PS1='>$ '; stty cols 999                                                          
+>$ 

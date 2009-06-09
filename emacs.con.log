@@ -1,0 +1,21 @@
+[root@andLinux ~]# pushd text/rstcl/
+~/text/rstcl ~
+
+[root@andLinux rstcl]# TERM=ansi; PS1='>$ '; stty cols 999                                                          
+>$ git init
+Initialized empty Git repository in /root/text/rstcl/.git/
+
+>$ git add .
+>$ git remote add origin git@github.com:pepe5/rstcl.git
+>$ git push origin master
+Repository not found. If you've just created it, please try again in a few seconds.
+fatal: The remote end hung up unexpectedly
+
+>$ git commit -m '1st'
+Created initial commit 5922176: 1st
+ 3 files changed, 7 insertions(+), 0 deletions(-)
+ create mode 120000 .#emacs.con.log
+ create mode 100644 README
+ create mode 100644 emacs.con.log
+
+>$ 
