@@ -1,0 +1,103 @@
+# //groups.google.com/group/comp.lang.ruby/msg/ffc30777453b1b75
+
+class SimpleGrammar
+  def initialize(grammar)
+    @grammar = grammar
+  end
+  def scan(cursor,buffer)
+    @grammar.scan(cursor,buffer)
+  end
+  def |(other); Code.new \
+    { |cursor,buffer|
+      scan(cursor,buffer) || other.scan(cursor,buffer) } end
+  def +(other); Code.new \
+    { |cursor,buffer|
+      scan(cursor,buffer) && other.scan(cursor,buffer) } end
+  def filter(buf0,&block); Code.new \
+    { |cursor,buffer|
+      buf = buf0.clone
+      scan(cursor,buf) && buffer.concat(block[buf]) } end
+  def discard; Code.new \
+    { |cursor,buffer|
+      scan(cursor,[]) } end
+  class Code < SimpleGrammar
+    def initialize(&block)
+      @block = block
+    end
+    def scan(cursor,buffer)
+      @block[cursor,buffer]
+    end
+  end
+  class Recurse < SimpleGrammar
+    def initialize(&block)
+      @grammar = block[self]
+    end
+    def scan(cursor,buffer)
+      @grammar.scan(cursor,buffer)
+    end
+  end
+  class Element < SimpleGrammar
+    def initialize(pattern)
+      @pattern = pattern
+    end
+    def scan(cursor,buffer)
+      c = cursor.read1after
+      if @pattern===c
+        buffer << c
+        cursor.skip1next
+        true
+      end
+    end
+  end
+  # Make methods for our classes that call new for us
+  constants.each \
+  { |klass|
+    eval("
+            def #{klass}(*args,&block)
+                #{klass}.new(*args,&block)
+            end
+            def self.#{klass}(*args,&block)
+                #{klass}.new(*args,&block)
+            end
+        ") }
+  NULL = Code.new { true }
+end
+
+class IO
+  # implement just the methods we need to look like a cursor
+  def read1after; c=getc;ungetc(c);c; end
+  def skip1next; getc&&true; end
+end
+
+class Expression < SimpleGrammar::Recurse
+  def initialize; super() \
+    { |expr|
+      digit = Element(?0..?9)
+      int = Recurse { |int| digit+(int|NULL) }
+      number =
+      (int + (
+              Element(?.)+int |
+              NULL
+              )).filter("") { |n| [n.to_f] }
+      primary = Recurse \
+      { |primary|
+        number |
+        Element(?-).discard + primary + Code { |_,b| b[-1]=-b[-1] } |
+        Element(?().discard + expr + Element(?)).discard }
+      product = Recurse \
+      { |product|
+        primary + (
+                   Element(?*).discard + product + Code { |_,b| b[-2]*=b[-1];b.pop } |
+                   Element(?/).discard + product + Code { |_,b| b[-2]/=b[-1];b.pop } |
+                   NULL
+                   ) }
+      sum = Recurse \
+      { |sum|
+        product + (
+                   Element(?+).discard + sum + Code { |_,b| b[-2]+=b[-1];b.pop } |
+                   Element(?-).discard + sum + Code { |_,b| b[-2]-=b[-1];b.pop } |
+                   NULL
+                   ) } } end
+end
+
+Expression.new.scan(STDIN,buf=[]) && p(buf[0]) 

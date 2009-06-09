@@ -46,6 +46,83 @@ no changes added to commit (use "git add" and/or "git commit -a")
 fatal: Paths with -a does not make sense.
 
 >$ echo $EDITOR
-
 >$ export EDITOR=emacsclient
->$ 
+>$ git commit -a 
+Waiting for Emacs...
+Created commit eed2ff1: grammar try
+ 3 files changed, 73 insertions(+), 4 deletions(-)
+ delete mode 120000 .#emacs.con.log
+
+>$ git add .
+>$ echo grammar try > git commit -a
+>$ git push origin master
+Counting objects: 7, done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 1.00 KiB, done.
+Total 4 (delta 1), reused 0 (delta 0)
+To git@github.com:pepe5/rstcl.git
+   1e09e57..eed2ff1  master -> master
+
+>$ git add 1st-try.grammar.rb
+>$ git push origin master
+Everything up-to-date
+
+>$ echo 1+1 | ruby 1st-try.grammar.rb                                                                                
+2.0
+
+>$ echo '1+2*(34-56)' | ruby 1st-try.grammar.rb
+-43.0
+
+>$ git-reflog 
+eed2ff1... HEAD@{0}: commit: grammar try
+1e09e57... HEAD@{1}: commit (initial): 1st
+
+>$ git-w
+git-web--browse  git-whatchanged  git-write-tree   
+
+>$ git-whatchanged 
+commit eed2ff197cd1ecb641ff621b21ebc81bb1a361aa
+Author: root <root@andLinux.(none)>
+Date:   Tue Jun 9 17:09:18 2009 -0400
+
+    grammar try
+
+:120000 000000 f0419fd... 0000000... D  .#emacs.con.log
+:100644 100644 803663f... 3d7a97d... M  emacs.con.log
+:100644 100644 ea7e1ff... 43c0e7c... M  emacs.con.log~
+
+commit 1e09e57ecef285bb56902f7d5cc80238c10625d2
+Author: root <root@andLinux.(none)>
+Date:   Tue Jun 9 16:37:14 2009 -0400
+
+    1st
+
+:000000 120000 0000000... f0419fd... A  .#emacs.con.log
+:000000 100644 0000000... 803663f... A  emacs.con.log
+:000000 100644 0000000... ea7e1ff... A  emacs.con.log~
+
+>$ git add 1st-try.grammar.rb
+>$ echo pico-tidyfied > git commit -a
+
+>$ git-whatchanged
+commit eed2ff197cd1ecb641ff621b21ebc81bb1a361aa
+Author: root <root@andLinux.(none)>
+Date:   Tue Jun 9 17:09:18 2009 -0400
+
+    grammar try
+
+:120000 000000 f0419fd... 0000000... D  .#emacs.con.log
+:100644 100644 803663f... 3d7a97d... M  emacs.con.log
+:100644 100644 ea7e1ff... 43c0e7c... M  emacs.con.log~
+
+commit 1e09e57ecef285bb56902f7d5cc80238c10625d2
+Author: root <root@andLinux.(none)>
+Date:   Tue Jun 9 16:37:14 2009 -0400
+
+    1st
+
+:000000 120000 0000000... f0419fd... A  .#emacs.con.log
+:000000 100644 0000000... 803663f... A  emacs.con.log
+:000000 100644 0000000... ea7e1ff... A  emacs.con.log~
+
+>$ git commit -a
