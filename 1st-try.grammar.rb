@@ -1,3 +1,9 @@
+# rstcl:
+# [r]uby, (rst)
+# [s]malltalk, (s)yntax-tree -able
+# [t]alk from smalltalk, (t)ree - dom~ / xml~ loadable&controlable
+# [c]ommand - repl/cli iface builtin
+# [l]anguage - as mark-up language -- its readable always - not binary model
 # //groups.google.com/group/comp.lang.ruby/msg/ffc30777453b1b75
 
 class SimpleGrammar
